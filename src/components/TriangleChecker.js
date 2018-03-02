@@ -1,38 +1,37 @@
 import React from "react";
 import TriangleForm from "./TriangleForm";
 import CheckResult from "./CheckResult";
+import PropTypes from "prop-types";
 
 class TriangleChecker extends React.Component {
+    static defaultProps = {
+        defaultSides: [0, 0, 0]
+    };
+
+    static propTypes = {
+        defaultSides: PropTypes.arrayOf(PropTypes.number)
+    };
 
     constructor(props) {
         super(props);
+
+        let defaultSides = this.props.defaultSides;
         this.state = {
-            sides : [],
-            result: null
+            sides : defaultSides,
+            result: TriangleChecker.checkTriangle(...defaultSides)
         }
     }
-
-
-    submitForm = (e) => {
-        e.preventDefault();
-        // copy array to prevent mutability
-        let sides = this.state.sides.slice();
-        this.setState({
-            ...this.state,
-            result: TriangleChecker.checkTriangle(...sides)
-        });
-    };
-
 
     setSide = (sideNum) => (e) => {
         let sideValue = parseFloat(e.target.value);
         // if value parsed
         if (!Number.isNaN(sideValue)) {
+            // copy array to prevent mutability
             let currentSides = this.state.sides.slice();
             currentSides[sideNum] = sideValue;
             this.setState({
-                ...this.state,
-                sides: currentSides
+                result: TriangleChecker.checkTriangle(...currentSides),
+                sides : currentSides
             });
         }
     };
@@ -45,12 +44,13 @@ class TriangleChecker extends React.Component {
     render() {
         return (
             <div>
-                <TriangleForm submitForm={this.submitForm} sides={this.state.sides} setSide={this.setSide}/>
+                <TriangleForm sides={this.state.sides} setSide={this.setSide}/>
                 <CheckResult result={this.state.result}/>
             </div>
 
         )
     }
+
 }
 
 export default TriangleChecker;

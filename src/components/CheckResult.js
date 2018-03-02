@@ -3,11 +3,7 @@ import PropTypes from "prop-types";
 
 
 const getResultMessage = (result) => {
-    return result == null
-        ? 'Please, submit form!'
-        : result
-            ? 'Congratulate! Its triangle!'
-            : 'Its not triangle! Please, check sides!';
+    return result ? 'Congratulate! Its triangle!' : 'Its not triangle! Please, check sides!';
 };
 
 
@@ -21,11 +17,7 @@ const CheckResult = (props) => {
 
 
 CheckResult.propTypes = {
-    result: PropTypes.bool
-};
-
-CheckResult.defaultProps = {
-    result: null
+    result: PropTypes.bool.isRequired
 };
 
 
