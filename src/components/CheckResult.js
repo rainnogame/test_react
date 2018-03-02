@@ -4,10 +4,10 @@ import PropTypes from "prop-types";
 
 const getResultMessage = (result) => {
     return result == null
-        ? 'Please, submit form'
+        ? 'Please, submit form!'
         : result
-            ? 'Congratulate, its triangle!'
-            : 'Its not triangle, check sides!';
+            ? 'Congratulate! Its triangle!'
+            : 'Its not triangle! Please, check sides!';
 };
 
 

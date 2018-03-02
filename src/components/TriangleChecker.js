@@ -15,6 +15,7 @@ class TriangleChecker extends React.Component {
 
     submitForm = (e) => {
         e.preventDefault();
+        // copy array to prevent mutability
         let sides = this.state.sides.slice();
         this.setState({
             ...this.state,
@@ -25,6 +26,7 @@ class TriangleChecker extends React.Component {
 
     setSide = (sideNum) => (e) => {
         let sideValue = parseFloat(e.target.value);
+        // if value parsed
         if (!Number.isNaN(sideValue)) {
             let currentSides = this.state.sides.slice();
             currentSides[sideNum] = sideValue;
@@ -35,7 +37,7 @@ class TriangleChecker extends React.Component {
         }
     };
 
-
+    // check, that triangle can be built
     static checkTriangle(side1, side2, side3) {
         return side1 < side2 + side3 && side2 < side1 + side3 && side3 < side2 + side1;
     }
