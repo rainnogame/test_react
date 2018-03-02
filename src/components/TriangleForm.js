@@ -29,5 +29,9 @@ TriangleForm.propTypes = {
     sides     : PropTypes.arrayOf(PropTypes.number)
 };
 
+TriangleForm.defaultProps = {
+    sides: []
+};
+
 
 export default TriangleForm;

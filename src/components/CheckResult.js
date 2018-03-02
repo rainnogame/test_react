@@ -24,5 +24,9 @@ CheckResult.propTypes = {
     result: PropTypes.bool
 };
 
+CheckResult.defaultProps = {
+    result: null
+};
+
 
 export default CheckResult;
