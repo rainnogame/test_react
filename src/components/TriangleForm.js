@@ -12,7 +12,7 @@ function getSidesJsx(sidesCount, sides, setSide) {
 
 const TriangleForm = (props) => {
     // triangle sides count
-    const sidesCount = 3;
+    const sidesCount = props.sides.length;
     return (
         <div className="triangle-inputs">
             {getSidesJsx(sidesCount, props.sides, props.setSide)}
